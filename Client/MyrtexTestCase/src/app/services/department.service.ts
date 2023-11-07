@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,8 @@ import { Observable } from 'rxjs';
 export class DepartmentService {
 
   constructor(private http: HttpClient) { }
-  readonly ApiUrl = "https://localhost:7210/api"
 
   getDepartments() :Observable<any[]>{
-    return this.http.get<any>(this.ApiUrl + "/Department");
+    return this.http.get<any>(environment.apiUrl + "/Department");
   }
 }

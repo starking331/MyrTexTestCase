@@ -8,7 +8,9 @@ import { EmloyeeListComponent } from './features/employee/emloyee-list/emloyee-l
 import { CreateEmloyeeModalComponent } from './features/employee/create-emloyee-modal/create-emloyee-modal.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import { DropdownDepartmentComponent } from './features/department/dropdown-department/dropdown-department.component'
+import { DropdownDepartmentComponent } from './features/department/dropdown-department/dropdown-department.component';
+import { EmployeesTableComponent } from './features/employee/employees-table/employees-table.component';
+import { DeleteEmployeeModalComponent } from './features/employee/delete-employee-modal/delete-employee-modal.component'
 
 @NgModule({
   declarations: [
@@ -16,13 +18,15 @@ import { DropdownDepartmentComponent } from './features/department/dropdown-depa
     NavbarComponent,
     EmloyeeListComponent,
     CreateEmloyeeModalComponent,
-    DropdownDepartmentComponent
+    DropdownDepartmentComponent,
+    EmployeesTableComponent,
+    DeleteEmployeeModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

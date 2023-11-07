@@ -17,32 +17,117 @@
         ></button>
       </div>
       <div class="modal-body">
-        <form #form = "ngForm" (ngSubmit)="createEmployeeSubmit()">
+        <form #form="ngForm" (ngSubmit)="createEmployeeSubmit()">
           <div class="form-group">
-            <app-dropdown-department></app-dropdown-department>
+            <app-dropdown-department
+              (valueSelected)="updateDepartment($event)"
+            ></app-dropdown-department>
+
             <div class="mt-2">
-                <label class="form-lable">Имя:</label>
-                <input type="text" id="employeeName" class="form-control" name="employeeName" [(ngModel)] = "model.name">
-                
+              <label for="employeeName" class="form-lable">ФИО:</label>
+              <input
+                type="text"
+                id="employeeName"
+                class="form-control"
+                name="employeeName"
+                [(ngModel)]="model.name"
+                #name="ngModel"
+                pattern="^[А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+$"
+                required
+              />
+              <div
+                [hidden]="name.valid || name.untouched"
+                class="alert alert-danger"
+              >
+                Введите полное ФИО
+              </div>
             </div>
 
             <div class="mt-2">
-                <label class="form-lable">Имя:</label>
-                <input type="text" id="employeeName" class="form-control" name="employeeName">
+              <label for="datePicker" class="form-label">День рождения:</label>
+              <input
+                type="date"
+                class="form-control"
+                id="datePicker"
+                name="dateOfBirth"
+                [(ngModel)]="model.dateOfBirth"
+                #dateOfBirth="ngModel"
+                required
+              />
+              <div
+                [hidden]="dateOfBirth.valid || dateOfBirth.untouched"
+                class="alert alert-danger"
+              >
+                Обязательное поле
+              </div>
             </div>
 
             <div class="mt-2">
-                <label class="form-lable">Имя:</label>
-                <input type="text" id="employeeName" class="form-control" name="employeeName">
+              <label for="datePicker" class="form-label"
+                >Дата устройства:</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="datePicker"
+                name="dateOfEmployment"
+                [(ngModel)]="model.dateOfEmployment"
+                #dateOfEmployment="ngModel"
+                required
+              />
+              <div
+                [hidden]="dateOfEmployment.valid || dateOfEmployment.untouched"
+                class="alert alert-danger"
+              >
+                Обязательное поле
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <label for="salary" class="form-label">Зарплата:</label>
+              <input
+                type="number"
+                class="form-control"
+                id="salary"
+                name="salary"
+                #salary="ngModel"
+                [(ngModel)]="model.salary"
+                pattern="^[1-9]\d*$"
+                required
+              />
+              <div
+                [hidden]="salary.valid || salary.untouched"
+                class="alert alert-danger"
+              >
+                Некорректное значение зарплаты
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+                id = "employeeCreateClosebutton"
+              >
+                Close
+              </button>
+              <button
+                [disabled]="
+                  name.invalid ||
+                  dateOfEmployment.invalid ||
+                  dateOfBirth.invalid ||
+                  salary.invalid ||
+                  model.departmentId === 0
+                "
+                type="submit"
+                class="btn btn-primary"
+              >
+                Создать
+              </button>
             </div>
           </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="submit" class="btn btn-primary">Создать сотрудника</button>
       </div>
     </div>
   </div>

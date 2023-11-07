@@ -3,7 +3,7 @@
 </label>
 <div class="col-sm-10 mt-2">
     <select name="Department" (change)="ChangeDepartment($event)" class="form-control">
-        <option>--Выберите отдел--</option>
+        <option disabled selected>--Выберите отдел--</option>
         <option [value]="dep.id" *ngFor="let dep of Departments">
             {{dep.name}}
         </option>
