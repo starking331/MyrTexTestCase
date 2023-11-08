@@ -35,22 +35,23 @@ export class EmployeeTableComponent {
   sortAsc(sortTerm: string) {
     const index = this.sorts.findIndex((s) => s.name === sortTerm);
     this.sorts[index].value = 'asc';
-    this.sortTerm = sortTerm + ' asc';
+    this.getSortTerm()
     this.getEmployeesWithFilter()
   }
 
   sortDesc(sortTerm: string) {
     const index = this.sorts.findIndex((s) => s.name === sortTerm);
     this.sorts[index].value = 'desc';
-    this.sortTerm = sortTerm + ' desc'
+    this.getSortTerm()
     this.getEmployeesWithFilter();
   }
 
   getSortTerm() {
+    this.sortTerm = ''
     for (let index = 0; index < this.sorts.length; index++) {
       const element = this.sorts[index];
       if(this.sorts[index].value !== '') {
-        this.sortTerm += this.sorts[index].name + ' ' + this.sorts[index].value + ', '
+        this.sortTerm += this.sorts[index].name + ' ' + this.sorts[index].value + ','
       }  
     }
     console.log(this.sortTerm)
@@ -69,12 +70,10 @@ export class EmployeeTableComponent {
       { value: "", name: "DateOfEmployment" },
       { value: "", name: "Salary" }
     ];
-
     this.getEmployeesWithFilter();
   }
 
   getEmployeesWithFilter() {
-    this.getSortTerm()
     this.service.getEmployeesWithFilter(this.nameFilter, this.salaryFilter, this.dateOfBirthFilter, this.dateOfEmploymentFilter, this.departmentFilter, this.sortTerm)
     .subscribe(employees => this.Employees = employees);
   }

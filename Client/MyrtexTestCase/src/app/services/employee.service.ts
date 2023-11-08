@@ -57,6 +57,7 @@ export class EmployeeService {
     }
     if(sortTerm) {
       params = params.append('Sort' ,sortTerm);
+      console.log(sortTerm)
     }
 
     return this.http.get<EmployeeModel[]>(environment.apiUrl + '/Employee/', {params})
