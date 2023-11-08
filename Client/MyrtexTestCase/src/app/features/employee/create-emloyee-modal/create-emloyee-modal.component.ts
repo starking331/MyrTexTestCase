@@ -30,7 +30,7 @@ export class CreateEmloyeeModalComponent implements OnDestroy {
   createEmployeeSubmit() {
     this.createEmployeeSubscribtion = this.employeeService.createEmployee(this.model)
     .subscribe({
-      next: (response) => {
+      next: () => {
         alert("Сотрудник успешно создан");
         document.getElementById("employeeCreateClosebutton")?.click();
       },

@@ -13,6 +13,7 @@ namespace MyrtexTestCase.Helpers
                 .ForMember(dist => dist.Department,
                 opt => opt.MapFrom(src => src.Department.Name));
             this.CreateMap<Department, DepartmentDTO>();
+            this.CreateMap<Employee, CreateEmployeeRequestDTO>();
         }
     }
 }

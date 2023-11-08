@@ -7,7 +7,7 @@ namespace MyrtexTestCase.SortingAndFilters
     {
         public string? Sort { get; set; }
         public string? Name {  get; set; }
-        public int? DepartmentId { get; set; }
+        public string? Department { get; set; }
         public DateTime? DayOfBirth { get; set; }
         public DateTime? DayOfEmployment { get; set; }
         public int? Salary { get; set;}

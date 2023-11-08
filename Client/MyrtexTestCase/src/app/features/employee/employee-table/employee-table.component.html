@@ -1,0 +1,115 @@
+<div class="container">
+  <div class="card mt-3">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-3">
+          <label class="form-label">Отдел:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="departmentFilter"
+            placeholder="Поиск по отделу"
+          />
+        </div>
+
+        <div class="col-2">
+          <label class="form-label">ФИО:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="nameFilter"
+            placeholder="Поиск по имени"
+          />
+        </div>
+
+        <div class="col-2">
+          <label for="datePicker" class="form-label">Дата рождения:</label>
+          <input
+          type="date"
+          class="form-control"
+          id="datePicker"
+          name="dateOfEmployment"
+          [(ngModel)]="dateOfBirthFilter"
+          #dateOfEmployment="ngModel"
+          placeholder="Поиск по дате рождения"
+        />
+        </div>
+
+        <div class="col-2">
+          <label for="datePicker" class="form-label">Дата устройства:</label>
+          <input
+          type="date"
+          class="form-control"
+          id="datePicker"
+          name="dateOfEmployment"
+          [(ngModel)]="dateOfEmploymentFilter"
+          #dateOfEmployment="ngModel"
+          placeholder="Поиск по дате рождения"
+        />
+        </div>
+
+        <div class="col-2">
+          <label class="form-label">Зарплата:</label>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="salaryFilter"
+            placeholder="Поиск по зарплате"
+          />
+        </div>
+
+        <div class="col-1">
+          <button
+            class="btn btn-sm btn-success"
+            (click)="getEmployeesWithFilter()"
+          >
+            Поиск
+          </button>
+          <button
+          class="btn btn-sm btn-success mt-1"
+          (click)="onReset()"
+        >
+          Сбросить
+        </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Отдел<button class="btn btn-link" (click)="sortAsc('Department')">↑</button><button class="btn btn-link" (click)="sortDesc('Department')">↓</button></th>
+        <th scope="col">ФИО<button class="btn btn-link" (click)="sortAsc('Name')">↑</button><button class="btn btn-link" (click)="sortDesc('Name')">↓</button></th>
+        <th scope="col">Дата рождения<button class="btn btn-link" (click)="sortAsc('DateOfBirth')">↑</button><button class="btn btn-link" (click)="sortDesc('DateOfBirth')">↓</button></th>
+        <th scope="col">Дата устройства на работу<button class="btn btn-link" (click)="sortAsc('DateOfEmployment')">↑</button><button class="btn btn-link" (click)="sortDesc('DateOfEmployment')">↓</button></th>
+        <th scope="col">Заработная плата<button class="btn btn-link" (click)="sortAsc('Salary')">↑</button><button class="btn btn-link" (click)="sortDesc('Salary')">↓</button></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of service.employees">
+        <td>{{ employee.department }}</td>
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.dateOfBirth | date : "dd.MM.yyyy" }}</td>
+        <td>{{ employee.dateOfEmployment | date : "dd.MM.yyyy" }}</td>
+        <td>{{ employee.salary }}</td>
+        <td>
+          <div class="d-flex gap-3">
+            <button
+              class="btn btn-outline-primary"
+              (click)="editEmployee(employee.id)"
+            >
+              Изменить
+            </button>
+            <button
+              class="btn btn-outline-danger"
+              (click)="removeEmployee(employee.id)"
+            >
+              Удалить
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

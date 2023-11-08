@@ -2,9 +2,9 @@
     Отдел:
 </label>
 <div class="col-sm-10 mt-2">
-    <select name="Department" (change)="ChangeDepartment($event)" class="form-control">
-        <option disabled selected>--Выберите отдел--</option>
-        <option [value]="dep.id" *ngFor="let dep of Departments">
+    <select name="Department" (change)="ChangeDepartment($event)" [(ngModel)]="selectedDepartment" class="form-control">
+        <option [ngValue]="null" disabled selected>--Выберите отдел--</option>
+        <option [ngValue]="dep" *ngFor="let dep of Departments">
             {{dep.name}}
         </option>
     </select>

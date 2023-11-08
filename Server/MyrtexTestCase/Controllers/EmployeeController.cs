@@ -73,11 +73,11 @@ namespace MyrtexTestCase.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<EmployeeDTO>> GetEmployeeByIdAsync(int id)
+        public async Task<ActionResult<CreateEmployeeRequestDTO>> GetEmployeeByIdAsync(int id)
         {
-            var employee = await _dbContext.Employees.Include(e => e.Department).SingleOrDefaultAsync(e => e.Id == id);
+            var employee = await _dbContext.Employees.SingleOrDefaultAsync(e => e.Id == id);
 
-            return Ok(_mapper.Map<Employee, EmployeeDTO>(employee));
+            return Ok(_mapper.Map<Employee, CreateEmployeeRequestDTO>(employee));
         }
 
         [HttpGet]

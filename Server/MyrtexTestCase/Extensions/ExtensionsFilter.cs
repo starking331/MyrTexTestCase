@@ -12,9 +12,9 @@ namespace MyrtexTestCase.Extensions
         }
 
         [Expandable]
-        public static IQueryable<Employee> FilterByDepartment(this IEnumerable<Employee> employees, int? departmentId)
+        public static IQueryable<Employee> FilterByDepartment(this IEnumerable<Employee> employees, string? departmentName)
         {
-            return employees.AsQueryable().Where(e => e.DepartmentId == departmentId);
+            return employees.AsQueryable().Where(e => e.Department.Name.ToLower().Contains(departmentName.ToLower()));
         }
 
         [Expandable]

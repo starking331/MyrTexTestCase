@@ -13,9 +13,9 @@ namespace MyrtexTestCase.SortingAndFilters
                 query = query.FilterByName(filter.Name);
             }
 
-            if (filter.DepartmentId != null)
+            if (filter.Department != null)
             {
-                query = query.FilterByDepartment(filter.DepartmentId);
+                query = query.FilterByDepartment(filter.Department);
             }
 
             if(filter.Salary != null)

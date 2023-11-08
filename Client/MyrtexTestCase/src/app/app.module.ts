@@ -9,8 +9,11 @@ import { CreateEmloyeeModalComponent } from './features/employee/create-emloyee-
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { DropdownDepartmentComponent } from './features/department/dropdown-department/dropdown-department.component';
-import { EmployeesTableComponent } from './features/employee/employees-table/employees-table.component';
-import { DeleteEmployeeModalComponent } from './features/employee/delete-employee-modal/delete-employee-modal.component'
+import { DeleteEmployeeModalComponent } from './features/employee/delete-employee-modal/delete-employee-modal.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { EmployeeTableComponent } from './features/employee/employee-table/employee-table.component';
+import { EditEmployeeModalComponent } from './features/employee/edit-employee-modal/edit-employee-modal.component'
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,16 +22,20 @@ import { DeleteEmployeeModalComponent } from './features/employee/delete-employe
     EmloyeeListComponent,
     CreateEmloyeeModalComponent,
     DropdownDepartmentComponent,
-    EmployeesTableComponent,
-    DeleteEmployeeModalComponent
+    DeleteEmployeeModalComponent,
+    EmployeeTableComponent,
+    EditEmployeeModalComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgbModule
   ],
-  providers: [],
+  providers: [ 
+    DatePipe,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
